@@ -2,8 +2,7 @@
 resource "aws_instance" "servers"{
     count=1
     ami = var.ami_id
-     instance_type = "t2.micro"
-      key_name= var.size
+     instance_type = var.size
     vpc_security_group_ids = ["servers_sg"]
     tags = {
         Name = local.EC2_Name_Tag
@@ -40,12 +39,5 @@ resource "aws_security_group" "servers_sg" {
    tags = {
     Name = "Allow All Traffic"
   }
-}
-
-# in cmd prompt we need to use below command to generate keys
-# ssh-keygen -t rsa
-resource "aws_key_pair" "deployer" {
-  key_name   = "key1"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDPnphevR6Zhv6P7tMDbfbhC/U930UlgFyIs1JFRmlXNi8LfZZZivakpNy0UhHfXcdICsmcL3YBVSri6M1erdwAi3J/gdwhS5tWshY3zdTXVh2owE8q05UyrqYkLHfPMoJbbWWig2LOJFP9awkzigxpHAo8VAaMKStIWdkUPlp+ZdsBVRoNZZsARkWW7ISEaLe/+VAxfJs0ggicdlQyqENMZX/3M6ug9AkEMb2uzcBXqmJbS8HN8hwYX6QWmXrGMuAUl4NyDF8pWnvXM7bncnH59q/Auhd+HF8ufNJe32O3vmzfbnCPWNJvC8XCrslT+vrms7zZQwGTWHyMujacvzhHi2DDL6fk4upHJiHEcmIvFcbA3KKvUMmqP3e/k9TlJCX7sZeypWRha0wBMSALYgyL7P1DzXaZdFv60NTBgsLaaAKP6HQuzYH+60EcqUzYj7zeIr7Gys7oCYC5kg0LTkSv77AWlSPRboYOv6NP73mKeH2cPXi8OgMvZiW8LU0iT7c= kmcmo@DESKTOP-LBUPGDC"
 }
 
