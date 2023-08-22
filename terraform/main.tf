@@ -11,8 +11,8 @@ resource "aws_instance" "servers"{
 
 # creating SG to attach EC2 instance
 resource "aws_security_group" "servers_sg" {
-   name        = "security_jenkins_port"
-   description = "security group for jenkins"
+   name        = "scalr_SG"
+   description = "security group for Scalar"
 
   ingress {
     from_port   = 8080
