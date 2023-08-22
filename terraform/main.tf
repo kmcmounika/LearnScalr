@@ -1,9 +1,9 @@
 # creating EC2 instance with Key and SG
 resource "aws_instance" "servers"{
     count=1
-    ami = "ami-094125af156557ca2"  # us-west-2 region AMI ID
+    ami = var.ami_id
      instance_type = "t2.micro"
-      key_name= "key1"
+      key_name= var.size
     vpc_security_group_ids = ["servers_sg"]
     tags = {
         Name = local.EC2_Name_Tag
